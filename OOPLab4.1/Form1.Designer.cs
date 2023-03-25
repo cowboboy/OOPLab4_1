@@ -30,7 +30,7 @@
         {
             this.PaintBox = new System.Windows.Forms.Panel();
             this.checkBoxCtrl = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBoxCollision = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -54,15 +54,16 @@
             this.checkBoxCtrl.UseVisualStyleBackColor = true;
             this.checkBoxCtrl.CheckedChanged += new System.EventHandler(this.checkBoxCtrl_CheckedChanged);
             // 
-            // checkBox2
+            // checkBoxCollision
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(187, 32);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(101, 24);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBoxCollision.AutoSize = true;
+            this.checkBoxCollision.Location = new System.Drawing.Point(187, 32);
+            this.checkBoxCollision.Name = "checkBoxCollision";
+            this.checkBoxCollision.Size = new System.Drawing.Size(145, 24);
+            this.checkBoxCollision.TabIndex = 2;
+            this.checkBoxCollision.Text = "Multiple collision";
+            this.checkBoxCollision.UseVisualStyleBackColor = true;
+            this.checkBoxCollision.CheckedChanged += new System.EventHandler(this.checkBoxCollision_CheckedChanged);
             // 
             // label1
             // 
@@ -79,7 +80,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBoxCollision);
             this.Controls.Add(this.checkBoxCtrl);
             this.Controls.Add(this.PaintBox);
             this.KeyPreview = true;
@@ -97,7 +98,7 @@
 
         private Panel PaintBox;
         private CheckBox checkBoxCtrl;
-        private CheckBox checkBox2;
+        private CheckBox checkBoxCollision;
         private Label label1;
     }
 }

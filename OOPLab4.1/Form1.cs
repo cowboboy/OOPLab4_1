@@ -5,6 +5,7 @@ namespace OOPLab4._1
         Storage storage; // Хранилище с нарисованными окружностями
 
         bool isCtrlActive = false;
+        bool isCollisionActive = true;
         bool pressedCtrl = false; 
         public Form1()
         {
@@ -15,26 +16,53 @@ namespace OOPLab4._1
 
         private void PaintBox_MouseClick(object sender, MouseEventArgs e)
         {
-            for (int i = 0; i < storage.size; ++i)
+            bool isFirstLayer = true;
+            for (int i = storage.size - 1; i >= 0; --i)
             {
-                // Нажатие мышки вместе с Ctrl
+                // Нажатие мышки вместе с активным checkBoxCtrl
                 if (isCtrlActive && pressedCtrl) 
                 {
-                    // Делаем активными все выбранные левой кнопкой мыши элементы
-                    if (e.Button == MouseButtons.Left && storage.getObject(i).intersects(e.Location))
+                    if (isCollisionActive)
                     {
-                        storage.getObject(i).isActive = true;
+                        // Делаем активными все выбранные левой кнопкой мыши элементы
+                        if (e.Button == MouseButtons.Left && storage.getObject(i).intersects(e.Location) && isFirstLayer)
+                        {
+                            storage.getObject(i).isActive = true;
+                            isFirstLayer = false;
+                        }
+                        // Не затираем активные элементы, так как работает Ctrl
+                    } else
+                    {
+                        if (e.Button == MouseButtons.Left && storage.getObject(i).intersects(e.Location))
+                        {
+                            storage.getObject(i).isActive = true;
+                        }
                     }
-                    // Не затираем активные элементы, так как работает Ctrl
-                } else // Нажатие мышки без Ctrl
+                }
+                else
                 {
-                    if (e.Button == MouseButtons.Left && storage.getObject(i).intersects(e.Location)) 
+                    if (isCollisionActive)
                     {
-                        storage.getObject(i).isActive = true;
+                        if (e.Button == MouseButtons.Left && storage.getObject(i).intersects(e.Location) && isFirstLayer)
+                        {
+                            storage.getObject(i).isActive = true;
+                            isFirstLayer = false;
+                        }
+                        else
+                        {
+                            storage.getObject(i).isActive = false;
+                        }
                     }
                     else
                     {
-                        storage.getObject(i).isActive = false;
+                        if (e.Button == MouseButtons.Left && storage.getObject(i).intersects(e.Location))
+                        {
+                            storage.getObject(i).isActive = true;
+                        }
+                        else
+                        {
+                            storage.getObject(i).isActive = false;
+                        }
                     }
                 }
             }
@@ -71,6 +99,14 @@ namespace OOPLab4._1
                 pressedCtrl = true;
                 label1.Text = "CtrlDown";
             }
+            if (e.KeyCode == Keys.Back)
+            {
+                storage.deleteActiveElements();
+                label1.Text = "Delete";
+
+                // Перерисовка
+                PaintBox.Refresh();
+            }
         }
 
         private void checkBoxCtrl_CheckedChanged(object sender, EventArgs e)
@@ -85,6 +121,11 @@ namespace OOPLab4._1
                 pressedCtrl = false;
                 label1.Text = "CtrlUp";
             }
+        }
+
+        private void checkBoxCollision_CheckedChanged(object sender, EventArgs e)
+        {
+            isCollisionActive = !isCollisionActive;
         }
     }
 }
