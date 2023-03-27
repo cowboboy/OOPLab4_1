@@ -11,7 +11,6 @@ namespace OOPLab4._1
         {
             InitializeComponent();
             storage = new Storage();
-            this.KeyPreview = true;
         }
 
         private void PaintBox_MouseClick(object sender, MouseEventArgs e)
@@ -78,14 +77,8 @@ namespace OOPLab4._1
             PaintBox.Refresh();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-           
-        }
-
         private void PaintBox_Paint(object sender, PaintEventArgs e)
         {
-            Console.WriteLine("Bebra");
             for (int i = 0; i < storage.size; ++i)
             {
                 storage.getObject(i).myPaint(e.Graphics);
@@ -97,12 +90,10 @@ namespace OOPLab4._1
             if (e.Control)
             {
                 pressedCtrl = true;
-                label1.Text = "CtrlDown";
             }
             if (e.KeyCode == Keys.Back)
             {
                 storage.deleteActiveElements();
-                label1.Text = "Delete";
 
                 // Перерисовка
                 PaintBox.Refresh();
@@ -119,7 +110,6 @@ namespace OOPLab4._1
             if (e.KeyCode == Keys.ControlKey)
             {
                 pressedCtrl = false;
-                label1.Text = "CtrlUp";
             }
         }
 

@@ -31,7 +31,6 @@
             this.PaintBox = new System.Windows.Forms.Panel();
             this.checkBoxCtrl = new System.Windows.Forms.CheckBox();
             this.checkBoxCollision = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PaintBox
@@ -65,28 +64,17 @@
             this.checkBoxCollision.UseVisualStyleBackColor = true;
             this.checkBoxCollision.CheckedChanged += new System.EventHandler(this.checkBoxCollision_CheckedChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(368, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBoxCollision);
             this.Controls.Add(this.checkBoxCtrl);
             this.Controls.Add(this.PaintBox);
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
@@ -99,6 +87,5 @@
         private Panel PaintBox;
         private CheckBox checkBoxCtrl;
         private CheckBox checkBoxCollision;
-        private Label label1;
     }
 }
